@@ -558,55 +558,55 @@ function populateTechnicalDetails(fp) {
         '💡 User-Agent Switcher pour simuler Chrome');
 
     addProtectionTip('platform', `${fp.platform} (${analysis.os.architecture || 'Unknown arch'})`,
-        '⚠️ Difficile à masquer, utilisez une VM');
+        '⚠️ Hard to hide, use a VM');
 
     addProtectionTip('language', fp.language,
-        fp.language === 'en-US' ? '✅ Langue commune' : '💡 Changez pour en-US dans les paramètres');
+        fp.language === 'en-US' ? '✅ Common language' : '💡 Change to en-US in settings');
 
     addProtectionTip('languages', fp.languages.join(', ') || 'N/A',
         '💡 about:config → intl.accept_languages');
 
     addProtectionTip('hardwareConcurrency', fp.hardwareConcurrency + ' cores',
-        '❌ Impossible à masquer, acceptez cette valeur');
+        '❌ Cannot hide, accept this value');
 
     addProtectionTip('deviceMemory', fp.deviceMemory ? fp.deviceMemory + ' GB' : 'N/A',
         '❌ Hardware direct, non modifiable');
 
     addProtectionTip('screenResolution', fp.screenResolution,
-        fp.screenResolution === '1920x1080' ? '✅ Résolution commune' : '💡 F11 pour sortir plein écran, redimensionnez');
+        fp.screenResolution === '1920x1080' ? '✅ Common resolution' : '💡 Press F11 to exit fullscreen, resize window');
 
     addProtectionTip('availableResolution', fp.availableResolution,
         '💡 Ne maximisez jamais votre fenêtre');
 
     addProtectionTip('colorDepth', fp.colorDepth + ' bits',
-        '✅ Standard pour la plupart des écrans');
+        '✅ Standard for most screens');
 
     addProtectionTip('pixelRatio', fp.pixelRatio + 'x',
-        fp.pixelRatio === 1 ? '✅ Standard' : '💡 Zoom à 100% recommandé');
+        fp.pixelRatio === 1 ? '✅ Standard' : '💡 100% zoom recommended');
 
     addProtectionTip('touchSupport', fp.touchSupport ? 'Oui' : 'Non',
-        '💡 Touch sur desktop = rare et identifiant');
+        '💡 Touch on desktop = rare and identifying');
 
-    addProtectionTip('cookiesEnabled', fp.cookiesEnabled ? 'Oui' : 'Non',
-        fp.cookiesEnabled ? '⚠️ Nécessaire mais traçable' : '✅ Protection mais sites cassés');
+    addProtectionTip('cookiesEnabled', fp.cookiesEnabled ? 'Yes' : 'No',
+        fp.cookiesEnabled ? '⚠️ Necessary but trackable' : '✅ Protection but broken sites');
 
-    addProtectionTip('doNotTrack', fp.doNotTrack || 'Non défini',
-        '💡 DNT = paradoxalement plus unique!');
+    addProtectionTip('doNotTrack', fp.doNotTrack || 'Not set',
+        '💡 DNT = paradoxically more unique!');
 
     addProtectionTip('timezone', fp.timezone,
         '💡 Change system timezone if VPN used');
 
     addProtectionTip('timezoneOffset', fp.timezoneOffset + ' minutes',
-        '💡 Doit correspondre à votre IP apparente');
+        '💡 Must match your apparent IP location');
 
-    addProtectionTip('sessionStorage', fp.sessionStorage ? 'Disponible' : 'Bloqué',
+    addProtectionTip('sessionStorage', fp.sessionStorage ? 'Available' : 'Blocked',
         '⚠️ Bloquer = sites modernes cassés');
 
-    addProtectionTip('localStorage', fp.localStorage ? 'Disponible' : 'Bloqué',
-        '⚠️ Bloquer = perte de préférences sites');
+    addProtectionTip('localStorage', fp.localStorage ? 'Available' : 'Blocked',
+        '⚠️ Blocking = loss of site preferences');
 
-    addProtectionTip('indexedDB', fp.indexedDB ? 'Disponible' : 'Non disponible',
-        '💡 Peut être désactivé sans trop d\'impact');
+    addProtectionTip('indexedDB', fp.indexedDB ? 'Available' : 'Not available',
+        '💡 Can be disabled without much impact');
 
     const canvasEl = document.getElementById('fingerprintCanvas');
     if (canvasEl) {
@@ -618,16 +618,16 @@ function populateTechnicalDetails(fp) {
     }
 
     addProtectionTip('canvasHash', fp.canvasData ? fp.canvasData.substring(0, 16) + '...' : 'N/A',
-        fp.canvasData ? '⚠️ 99.5% unique! Canvas Blocker ou Firefox RFP' : '✅ Canvas bloqué mais vous êtes rare!');
+        fp.canvasData ? '⚠️ 99.5% unique! Canvas Blocker or Firefox RFP' : '✅ Canvas blocked but you are rare!');
 
-    addProtectionTip('webglVendor', fp.webglVendor || 'Masqué',
-        fp.webglVendor ? '💡 webgl.disabled=true dans about:config' : '✅ WebGL masqué');
+    addProtectionTip('webglVendor', fp.webglVendor || 'Hidden',
+        fp.webglVendor ? '💡 webgl.disabled=true in about:config' : '✅ WebGL hidden');
 
-    addProtectionTip('webglRenderer', fp.webglRenderer ? fp.webglRenderer.substring(0, 30) + '...' : 'Masqué',
-        fp.webglRenderer ? '⚠️ Révèle votre GPU exact' : '✅ GPU masqué');
+    addProtectionTip('webglRenderer', fp.webglRenderer ? fp.webglRenderer.substring(0, 30) + '...' : 'Hidden',
+        fp.webglRenderer ? '⚠️ Reveals your exact GPU' : '✅ GPU hidden');
 
-    addProtectionTip('audioContext', fp.audioSampleRate ? `${fp.audioSampleRate} Hz` : 'Non supporté',
-        fp.audioSampleRate === 44100 ? '✅ Taux commun' : '💡 Difficile à changer sans casser l\'audio');
+    addProtectionTip('audioContext', fp.audioSampleRate ? `${fp.audioSampleRate} Hz` : 'Not supported',
+        fp.audioSampleRate === 44100 ? '✅ Common rate' : '💡 Hard to change without breaking audio');
 
     addProtectionTip('plugins', fp.plugins.length > 0 ? fp.plugins.length + ' plugin(s)' : 'None',
         fp.plugins.length === 0 ? '✅ No plugins = normal in 2024' : '⚠️ Plugins = red flag, uninstall!');
