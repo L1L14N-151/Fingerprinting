@@ -1,0 +1,16 @@
+{
+  "name": "browser-fingerprint-detector",
+  "version": "1.0.0",
+  "description": "Détecteur d'empreintes numériques de navigateur",
+  "main": "fingerprint.js",
+  "scripts": {
+    "start": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "fingerprint",
+    "browser",
+    "privacy",
+    "security"
+  ],
+  "license": "MIT"
+}
