@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Fingerprinting - Votre Empreinte Numérique</title>
+    <title>Browser Fingerprinting - Your Digital Fingerprint</title>
     <link rel="stylesheet" href="fingerprint.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>🔍 Browser Fingerprinting Detector</h1>
-            <p class="subtitle">Découvrez votre empreinte numérique unique</p>
+            <p class="subtitle">Discover your unique digital fingerprint</p>
         </header>
 
         <div class="fingerprint-id">
-            <div class="id-label">Votre Empreinte Numérique</div>
-            <div class="id-value" id="fingerprintHash">Calcul en cours...</div>
+            <div class="id-label">Your Digital Fingerprint</div>
+            <div class="id-value" id="fingerprintHash">Calculating...</div>
             <div class="uniqueness" id="uniqueness"></div>
         </div>
 
         <div class="main-display">
             <div class="fingerprint-visual" id="fingerprintVisual">
-                <h3>📊 Graphique d'Unicité</h3>
+                <h3>📊 Uniqueness Chart</h3>
                 <div class="graph-container">
                     <svg id="radarChart" width="400" height="400">
                         <!-- Will be populated by JS -->
@@ -30,22 +30,22 @@
                 <div class="chart-legend">
                     <div class="legend-item">
                         <span class="legend-dot average"></span>
-                        <span>Utilisateur moyen (50%)</span>
+                        <span>Average user (50%)</span>
                     </div>
                     <div class="legend-item">
                         <span class="legend-dot unique"></span>
-                        <span>Votre empreinte</span>
+                        <span>Your fingerprint</span>
                     </div>
                 </div>
             </div>
 
             <div class="key-info">
-                <h3>🔑 Résumé de votre profil</h3>
+                <h3>🔑 Your Profile Summary</h3>
                 <div class="key-info-grid" id="keyInfo">
                     <!-- Will be populated by JS -->
                 </div>
                 <div class="privacy-score">
-                    <h4>Score de confidentialité</h4>
+                    <h4>Privacy Score</h4>
                     <div class="score-bar">
                         <div class="score-fill" id="privacyScore"></div>
                     </div>
@@ -55,25 +55,25 @@
         </div>
 
         <details class="advanced-details">
-            <summary>🔧 Voir les détails techniques</summary>
+            <summary>🔧 View technical details</summary>
             <div class="detection-grid">
             <div class="detection-card">
-                <h3>📱 Informations Système</h3>
+                <h3>📱 System Information</h3>
                 <div class="info-group">
                     <div class="info-item">
                         <span class="label">User Agent:</span>
                         <span class="value" id="userAgent">-</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">Plateforme:</span>
+                        <span class="label">Platform:</span>
                         <span class="value" id="platform">-</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">Langue:</span>
+                        <span class="label">Language:</span>
                         <span class="value" id="language">-</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">Langues disponibles:</span>
+                        <span class="label">Available languages:</span>
                         <span class="value" id="languages">-</span>
                     </div>
                     <div class="info-item">
@@ -88,18 +88,18 @@
             </div>
 
             <div class="detection-card">
-                <h3>🖥️ Écran & Affichage</h3>
+                <h3>🖥️ Screen & Display</h3>
                 <div class="info-group">
                     <div class="info-item">
-                        <span class="label">Résolution:</span>
+                        <span class="label">Resolution:</span>
                         <span class="value" id="screenResolution">-</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">Résolution disponible:</span>
+                        <span class="label">Available resolution:</span>
                         <span class="value" id="availableResolution">-</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">Profondeur couleur:</span>
+                        <span class="label">Color depth:</span>
                         <span class="value" id="colorDepth">-</span>
                     </div>
                     <div class="info-item">
@@ -114,10 +114,10 @@
             </div>
 
             <div class="detection-card">
-                <h3>🌐 Navigateur</h3>
+                <h3>🌐 Browser</h3>
                 <div class="info-group">
                     <div class="info-item">
-                        <span class="label">Cookies activés:</span>
+                        <span class="label">Cookies enabled:</span>
                         <span class="value" id="cookiesEnabled">-</span>
                     </div>
                     <div class="info-item">
@@ -180,11 +180,11 @@
                 <h3>🔌 Plugins & Fonts</h3>
                 <div class="info-group">
                     <div class="info-item">
-                        <span class="label">Plugins installés:</span>
+                        <span class="label">Installed plugins:</span>
                         <span class="value" id="plugins">-</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">Fonts détectées:</span>
+                        <span class="label">Detected fonts:</span>
                         <span class="value" id="fonts">-</span>
                     </div>
                 </div>
@@ -193,14 +193,14 @@
         </details>
 
         <div class="protection-section">
-            <h2>🛡️ Se Protéger Efficacement</h2>
+            <h2>🛡️ Protect Yourself Effectively</h2>
 
             <details class="protection-details">
-                <summary>Configurations navigateurs (cliquez pour voir)</summary>
+                <summary>Browser configurations (click to view)</summary>
                 <div class="config-compact">
                     <div class="browser-config">
                         <h4>Firefox</h4>
-                        <p class="config-intro">Tapez <code>about:config</code> et modifiez:</p>
+                        <p class="config-intro">Type <code>about:config</code> and modify:</p>
                         <div class="config-list">
                             <span onclick="copyConfig(this)"><code>privacy.resistFingerprinting</code> → true</span>
                             <span onclick="copyConfig(this)"><code>webgl.disabled</code> → true</span>
@@ -210,7 +210,7 @@
 
                     <div class="browser-config">
                         <h4>Chrome/Edge</h4>
-                        <p class="config-intro">Tapez <code>chrome://flags</code> et activez:</p>
+                        <p class="config-intro">Type <code>chrome://flags</code> and enable:</p>
                         <div class="config-list">
                             <span onclick="copyConfig(this)"><code>#fingerprinting-canvas-image-data-noise</code></span>
                             <span onclick="copyConfig(this)"><code>#fingerprinting-client-rects-noise</code></span>
@@ -221,57 +221,57 @@
                     <div class="browser-config">
                         <h4>Brave</h4>
                         <p class="config-intro">Settings → Shields → Fingerprinting blocking → <strong>Aggressive</strong></p>
-                        <p class="config-note">Brave randomise automatiquement Canvas, Audio et WebGL</p>
+                        <p class="config-note">Brave automatically randomizes Canvas, Audio and WebGL</p>
                     </div>
                 </div>
             </details>
 
             <div class="protection-simple">
-                <h3>Guide Étape par Étape</h3>
+                <h3>Step-by-Step Guide</h3>
 
                 <div class="method-card">
-                    <h4>Option 1: Tor Browser (Rapide)</h4>
+                    <h4>Option 1: Tor Browser (Quick)</h4>
                     <ol class="steps-list">
-                        <li>Téléchargez Tor Browser sur <a href="https://www.torproject.org" target="_blank">torproject.org</a></li>
-                        <li>Installez sans modifier les paramètres</li>
-                        <li>Ne maximisez JAMAIS la fenêtre</li>
-                        <li>Utilisez "New Identity" entre chaque site</li>
-                        <li>Ne vous connectez à aucun compte personnel</li>
+                        <li>Download Tor Browser from <a href="https://www.torproject.org" target="_blank">torproject.org</a></li>
+                        <li>Install without modifying settings</li>
+                        <li>NEVER maximize the window</li>
+                        <li>Use "New Identity" between each site</li>
+                        <li>Don't log into any personal accounts</li>
                     </ol>
                 </div>
 
                 <div class="method-card">
-                    <h4>Option 2: Machine Virtuelle (Avancé)</h4>
+                    <h4>Option 2: Virtual Machine (Advanced)</h4>
                     <ol class="steps-list">
-                        <li>Installez VirtualBox ou VMware</li>
-                        <li>Créez une VM Windows 10 (4GB RAM, 50GB disque)</li>
-                        <li>Réglez résolution à 1920x1080</li>
-                        <li>Installez Chrome + VPN dans la VM</li>
-                        <li>Snapshot avant chaque utilisation</li>
-                        <li>Restaurez le snapshot après = empreinte fraîche</li>
+                        <li>Install VirtualBox or VMware</li>
+                        <li>Create a Windows 10 VM (4GB RAM, 50GB disk)</li>
+                        <li>Set resolution to 1920x1080</li>
+                        <li>Install Chrome + VPN in the VM</li>
+                        <li>Snapshot before each use</li>
+                        <li>Restore snapshot after = fresh fingerprint</li>
                     </ol>
                 </div>
 
                 <div class="method-card">
-                    <h4>Option 3: Configuration Complète (Expert)</h4>
+                    <h4>Option 3: Complete Setup (Expert)</h4>
                     <ol class="steps-list">
-                        <li>Installez Whonix ou Tails sur USB</li>
-                        <li>Configurez VPN multi-hop (ProtonVPN, Mullvad)</li>
-                        <li>Ajoutez proxy SOCKS5 résidentiel</li>
-                        <li>Lancez Tor Browser dans l'environnement</li>
-                        <li>Changez MAC address à chaque boot</li>
-                        <li>Nouvelle session = nouvelle identité complète</li>
+                        <li>Install Whonix or Tails on USB</li>
+                        <li>Configure multi-hop VPN (ProtonVPN, Mullvad)</li>
+                        <li>Add residential SOCKS5 proxy</li>
+                        <li>Launch Tor Browser in the environment</li>
+                        <li>Change MAC address on each boot</li>
+                        <li>New session = complete new identity</li>
                     </ol>
                 </div>
             </div>
 
             <div class="key-point">
-                <strong>💡 L'essentiel:</strong> Ne tentez pas de bloquer Canvas ou WebGL - cela vous rend plus unique. Utilisez plutôt Tor Browser où tout le monde a la même config, ou un browser anti-détection qui change votre empreinte à chaque fois.
+                <strong>💡 The key point:</strong> Don't try to block Canvas or WebGL - it makes you more unique. Instead use Tor Browser where everyone has the same config, or an anti-detection browser that changes your fingerprint each time.
             </div>
         </div>
 
         <div class="actions">
-            <button class="btn-refresh" onclick="location.reload()">🔄 Recalculer</button>
+            <button class="btn-refresh" onclick="location.reload()">🔄 Recalculate</button>
         </div>
     </div>
 

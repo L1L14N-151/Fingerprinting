@@ -1,33 +1,33 @@
 # 🔍 Browser Fingerprint Detector
 
-**Détecteur d'empreinte numérique avancé** - Découvrez comment les sites web vous identifient et protégez-vous efficacement.
+**Advanced Digital Fingerprint Detector** - Discover how websites identify you and protect yourself effectively.
 
-🌐 **Demo Live**: [https://votre-username.github.io/fingerprint-detector](https://votre-username.github.io/fingerprint-detector)
+🌐 **Live Demo**: [https://L1L14N-151.github.io/Fingerprinting](https://L1L14N-151.github.io/Fingerprinting)
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-### 📊 Analyse Complète
-- **12+ métriques** analysées en temps réel
-- **Hash SHA-256** unique pour chaque visiteur
-- **Graphique radar** interactif montrant votre unicité
-- **Scores basés sur des statistiques réelles** (Novembre 2024)
+### 📊 Complete Analysis
+- **12+ metrics** analyzed in real-time
+- **SHA-256 hash** unique for each visitor
+- **Interactive radar chart** showing your uniqueness
+- **Scores based on real statistics** (November 2024)
 
-### 🛡️ Protection Intégrée
-- **Guides étape par étape** pour Tor, VM, et configurations avancées
-- **Configurations navigateurs** (Firefox, Chrome, Edge, Brave)
-- **Score de confidentialité** en temps réel
-- **Conseils personnalisés** selon votre configuration
+### 🛡️ Built-in Protection
+- **Step-by-step guides** for Tor, VM, and advanced configurations
+- **Browser configurations** (Firefox, Chrome, Edge, Brave)
+- **Real-time privacy score**
+- **Personalized tips** based on your configuration
 
 ## 🚀 Installation
 
-### Option 1: GitHub Pages (Recommandé)
+### Option 1: GitHub Pages (Recommended)
 ```bash
-git clone https://github.com/votre-username/fingerprint-detector.git
-cd fingerprint-detector
-# Le site sera automatiquement disponible via GitHub Pages
+git clone https://github.com/L1L14N-151/Fingerprinting.git
+cd Fingerprinting
+# Site will be automatically available via GitHub Pages
 ```
 
-### Option 2: Serveur Local
+### Option 2: Local Server
 ```bash
 # Python
 python3 -m http.server 8000
@@ -39,88 +39,88 @@ npx http-server
 php -S localhost:8000
 ```
 
-Ouvrez `http://localhost:8000` dans votre navigateur.
+Open `http://localhost:8000` in your browser.
 
-## 📈 Métriques Analysées
+## 📈 Analyzed Metrics
 
-| Catégorie | Métriques | Impact Unicité |
-|-----------|-----------|----------------|
-| **Canvas** | Empreinte graphique | 99.5% unique |
+| Category | Metrics | Uniqueness Impact |
+|----------|---------|-------------------|
+| **Canvas** | Graphic fingerprint | 99.5% unique |
 | **WebGL** | GPU, Vendor, Renderer | 85% unique |
 | **Audio** | Sample rate, Context | 75% unique |
-| **Écran** | Résolution, DPI, Color depth | 60% unique |
-| **Système** | OS, CPU cores, RAM | 50% unique |
-| **Navigateur** | User-Agent, Plugins, Fonts | 70% unique |
-| **Localisation** | Timezone, Langue | 40% unique |
+| **Screen** | Resolution, DPI, Color depth | 60% unique |
+| **System** | OS, CPU cores, RAM | 50% unique |
+| **Browser** | User-Agent, Plugins, Fonts | 70% unique |
+| **Location** | Timezone, Language | 40% unique |
 
-## 🔐 Le Paradoxe de la Protection
+## 🔐 The Privacy Paradox
 
-> ⚠️ **Plus vous tentez de vous cacher, plus vous devenez unique !**
+> ⚠️ **The more you try to hide, the more unique you become!**
 
-Bloqueurs et extensions "privacy" créent souvent une empreinte **plus unique** que les configurations standards.
+Blockers and "privacy" extensions often create a **more unique** fingerprint than standard configurations.
 
-### Solutions Efficaces
+### Effective Solutions
 
-#### 1. 🌐 **Tor Browser** (Meilleur)
-- Tous les utilisateurs ont exactement la même empreinte
-- Changement d'identité en un clic
-- Réseau Tor intégré
+#### 1. 🌐 **Tor Browser** (Best)
+- All users have exactly the same fingerprint
+- One-click identity change
+- Built-in Tor network
 
-#### 2. 💻 **Machine Virtuelle**
-- Nouvelle empreinte à chaque snapshot
-- Isolation complète du système hôte
-- Compatible avec tous les navigateurs
+#### 2. 💻 **Virtual Machine**
+- New fingerprint with each snapshot
+- Complete isolation from host system
+- Compatible with all browsers
 
-#### 3. 🔧 **Configuration Avancée**
+#### 3. 🔧 **Advanced Configuration**
 - Firefox: `privacy.resistFingerprinting = true`
-- Chrome: Flags anti-fingerprinting
+- Chrome: Anti-fingerprinting flags
 - Brave: Shields mode "Aggressive"
 
-## 📁 Structure du Projet
+## 📁 Project Structure
 
 ```
-fingerprint-detector/
-├── index.html              # Interface principale
-├── fingerprint.js          # Logique de détection
-├── fingerprint.css         # Design minimaliste + dark mode
-├── fingerprint-scores.js   # Scoring statistiques 2024
-└── user-agent-parser.js    # Analyse User-Agent
+Fingerprinting/
+├── index.html              # Main interface
+├── fingerprint.js          # Detection logic
+├── fingerprint.css         # Minimalist design + dark mode
+├── fingerprint-scores.js   # 2024 statistics scoring
+└── user-agent-parser.js    # User-Agent analysis
 ```
 
 ## 🎯 Technologies
 
-- **Vanilla JavaScript** - Aucun framework, 100% natif
-- **Canvas API** - Empreinte graphique unique
-- **WebGL** - Informations GPU
-- **Web Audio API** - Empreinte audio
-- **CSS Variables** - Dark mode automatique
-- **SHA-256** - Hash cryptographique
+- **Vanilla JavaScript** - No framework, 100% native
+- **Canvas API** - Unique graphic fingerprint
+- **WebGL** - GPU information
+- **Web Audio API** - Audio fingerprint
+- **CSS Variables** - Automatic dark mode
+- **SHA-256** - Cryptographic hash
 
-## 📊 Statistiques Utilisées
+## 📊 Statistics Used
 
-Basé sur des données réelles de:
+Based on real data from:
 - StatCounter Global Stats
 - Chrome User Experience Report
 - Mozilla Firefox Telemetry
 - Can I Use Analytics
 
-Mises à jour: **Novembre 2024**
+Last updated: **November 2024**
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-Les PR sont les bienvenues ! Pour des changements majeurs, ouvrez d'abord une issue.
+PRs are welcome! For major changes, please open an issue first.
 
 ## 📝 License
 
-MIT - Utilisez librement ce code pour vos projets.
+MIT - Feel free to use this code for your projects.
 
-## 🔗 Ressources
+## 🔗 Resources
 
-- [AmIUnique.org](https://amiunique.org) - Test d'empreinte alternatif
-- [BrowserLeaks](https://browserleaks.com) - Tests détaillés
-- [Cover Your Tracks (EFF)](https://coveryourtracks.eff.org) - Test par l'EFF
-- [Tor Project](https://torproject.org) - Solution anti-fingerprinting
+- [AmIUnique.org](https://amiunique.org) - Alternative fingerprint test
+- [BrowserLeaks](https://browserleaks.com) - Detailed tests
+- [Cover Your Tracks (EFF)](https://coveryourtracks.eff.org) - Test by EFF
+- [Tor Project](https://torproject.org) - Anti-fingerprinting solution
 
 ---
 
-⭐ **Star ce projet si vous le trouvez utile !**
+⭐ **Star this project if you find it useful!**
