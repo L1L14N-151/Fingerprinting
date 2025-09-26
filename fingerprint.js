@@ -399,39 +399,39 @@ function displayKeyInfo(fp) {
     const keyData = [
         {
             icon: '💻',
-            label: 'Système',
+            label: 'System',
             value: realOS,
-            protection: realOS.includes('Windows') ? '✅ Commun' : '⚠️ Utilisez Windows pour passer inaperçu'
+            protection: realOS.includes('Windows') ? '✅ Common' : '⚠️ Use Windows to blend in'
         },
         {
             icon: '🌐',
-            label: 'Navigateur',
+            label: 'Browser',
             value: getBrowserName(fp.userAgent),
-            protection: getBrowserName(fp.userAgent).toLowerCase().includes('chrome') ? '✅ Commun' : '⚠️ Chrome = 66% des users'
+            protection: getBrowserName(fp.userAgent).toLowerCase().includes('chrome') ? '✅ Common' : '⚠️ Chrome = 66% of users'
         },
         {
             icon: '📱',
-            label: 'Écran',
+            label: 'Screen',
             value: fp.screenResolution,
-            protection: fp.screenResolution === '1920x1080' ? '✅ Résolution commune' : '⚠️ Redimensionnez à 1920x1080'
+            protection: fp.screenResolution === '1920x1080' ? '✅ Common resolution' : '⚠️ Resize to 1920x1080'
         },
         {
             icon: '🌍',
             label: 'Timezone',
             value: fp.timezone,
-            protection: '💡 Alignez avec votre VPN si utilisé'
+            protection: '💡 Align with your VPN if used'
         },
         {
             icon: '🎨',
             label: 'GPU',
             value: detectGPUType(fp.webglRenderer),
-            protection: fp.webglRenderer ? '⚠️ WebGL révèle votre GPU' : '✅ Masqué'
+            protection: fp.webglRenderer ? '⚠️ WebGL reveals your GPU' : '✅ Hidden'
         },
         {
             icon: '🔋',
             label: 'CPU Cores',
             value: fp.hardwareConcurrency + ' threads',
-            protection: '❌ Impossible à masquer efficacement'
+            protection: '❌ Cannot be effectively hidden'
         }
     ];
 
@@ -525,15 +525,15 @@ function calculatePrivacyScore(fp) {
 
     if (score >= 70) {
         scoreBar.style.background = 'var(--success)';
-        scoreText.textContent = 'Protection élevée';
+        scoreText.textContent = 'High protection';
         scoreText.style.color = 'var(--success)';
     } else if (score >= 40) {
         scoreBar.style.background = 'var(--warning)';
-        scoreText.textContent = 'Protection moyenne';
+        scoreText.textContent = 'Medium protection';
         scoreText.style.color = 'var(--warning)';
     } else {
         scoreBar.style.background = 'var(--danger)';
-        scoreText.textContent = 'Protection faible';
+        scoreText.textContent = 'Low protection';
         scoreText.style.color = 'var(--danger)';
     }
 
@@ -594,7 +594,7 @@ function populateTechnicalDetails(fp) {
         '💡 DNT = paradoxalement plus unique!');
 
     addProtectionTip('timezone', fp.timezone,
-        '💡 Changez timezone système si VPN utilisé');
+        '💡 Change system timezone if VPN used');
 
     addProtectionTip('timezoneOffset', fp.timezoneOffset + ' minutes',
         '💡 Doit correspondre à votre IP apparente');
@@ -629,11 +629,11 @@ function populateTechnicalDetails(fp) {
     addProtectionTip('audioContext', fp.audioSampleRate ? `${fp.audioSampleRate} Hz` : 'Non supporté',
         fp.audioSampleRate === 44100 ? '✅ Taux commun' : '💡 Difficile à changer sans casser l\'audio');
 
-    addProtectionTip('plugins', fp.plugins.length > 0 ? fp.plugins.length + ' plugin(s)' : 'Aucun',
-        fp.plugins.length === 0 ? '✅ Aucun plugin = normal en 2024' : '⚠️ Plugins = red flag, désinstallez!');
+    addProtectionTip('plugins', fp.plugins.length > 0 ? fp.plugins.length + ' plugin(s)' : 'None',
+        fp.plugins.length === 0 ? '✅ No plugins = normal in 2024' : '⚠️ Plugins = red flag, uninstall!');
 
-    addProtectionTip('fonts', fp.fonts + ' fonts détectées',
-        fp.fonts > 10 ? '⚠️ Désinstallez les fonts custom' : '✅ Peu de fonts = moins identifiable');
+    addProtectionTip('fonts', fp.fonts + ' fonts detected',
+        fp.fonts > 10 ? '⚠️ Uninstall custom fonts' : '✅ Few fonts = less identifiable');
 }
 
 async function initFingerprinting() {
@@ -662,7 +662,7 @@ async function initFingerprinting() {
     ];
 
     const entropyBits = calculateOverallEntropy(allScores);
-    const uniquenessText = `${entropyBits} bits d'entropie • 1 chance sur ${Math.pow(2, entropyBits).toExponential(1)} d'être identique`;
+    const uniquenessText = `${entropyBits} bits of entropy • 1 in ${Math.pow(2, entropyBits).toExponential(1)} chance of being identical`;
     document.getElementById('uniqueness').textContent = uniquenessText;
 
     displayKeyInfo(data);
@@ -672,17 +672,68 @@ async function initFingerprinting() {
     return data;
 }
 
+function populateTechnicalDetails(data) {
+    // System Info
+    document.getElementById('userAgent').textContent = data.userAgent || '-';
+    document.getElementById('platform').textContent = data.platform || '-';
+    document.getElementById('language').textContent = data.language || '-';
+    document.getElementById('languages').textContent = data.languages.join(', ') || '-';
+    document.getElementById('hardwareConcurrency').textContent = data.hardwareConcurrency + ' cores' || '-';
+    document.getElementById('deviceMemory').textContent = data.deviceMemory ? data.deviceMemory + ' GB' : '-';
+
+    // Screen Info
+    document.getElementById('screenResolution').textContent = data.screenResolution || '-';
+    document.getElementById('availableResolution').textContent = data.availableResolution || '-';
+    document.getElementById('colorDepth').textContent = data.colorDepth + ' bits' || '-';
+    document.getElementById('pixelRatio').textContent = data.pixelRatio || '-';
+    document.getElementById('touchSupport').textContent = data.touchSupport ? 'Yes' : 'No';
+
+    // Browser Info
+    document.getElementById('cookiesEnabled').textContent = data.cookiesEnabled ? 'Yes' : 'No';
+    document.getElementById('doNotTrack').textContent = data.doNotTrack || 'Not set';
+    document.getElementById('timezone').textContent = data.timezone || '-';
+    document.getElementById('timezoneOffset').textContent = data.timezoneOffset + ' minutes' || '-';
+    document.getElementById('sessionStorage').textContent = data.sessionStorage ? 'Enabled' : 'Disabled';
+    document.getElementById('localStorage').textContent = data.localStorage ? 'Enabled' : 'Disabled';
+    document.getElementById('indexedDB').textContent = data.indexedDB ? 'Enabled' : 'Disabled';
+
+    // Canvas
+    document.getElementById('canvasHash').textContent = data.canvasData ? data.canvasData.substring(0, 16) + '...' : 'Blocked';
+
+    // WebGL & Audio
+    document.getElementById('webglVendor').textContent = data.webglVendor || 'Not available';
+    document.getElementById('webglRenderer').textContent = data.webglRenderer || 'Not available';
+    document.getElementById('audioContext').textContent = data.audioSampleRate ? data.audioSampleRate + ' Hz' : 'Not available';
+
+    // Plugins & Fonts
+    document.getElementById('plugins').textContent = data.plugins.length + ' detected';
+    document.getElementById('fonts').textContent = data.fonts || 'Detection blocked';
+
+    // Draw canvas fingerprint
+    const canvas = document.getElementById('fingerprintCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.textBaseline = 'top';
+    ctx.font = '14px "Arial"';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#f60';
+    ctx.fillRect(125, 1, 62, 20);
+    ctx.fillStyle = '#069';
+    ctx.fillText('Canvas Fingerprint', 2, 15);
+    ctx.fillStyle = 'rgba(102, 204, 0, 0.7)';
+    ctx.fillText('Canvas Fingerprint', 4, 17);
+}
+
 function checkPrivacy() {
     const tips = [
-        "AdsPower ou Multilogin: Browsers anti-détection pro avec multi-profils",
+        "AdsPower or Multilogin: Pro anti-detection browsers with multi-profiles",
         "Firefox about:config: privacy.resistFingerprinting = true",
-        "Canvas Defender: Poison > Block (ajouter du bruit, pas bloquer)",
-        "WebGL disabled + WebRTC disabled = fuite IP et GPU bloquées",
-        "VM avec QEMU/KVM + GPU passthrough pour Canvas natif",
-        "Chaîne: Tails/Whonix → VPN multi-hop → SOCKS5 → Tor",
-        "AudioContext Fingerprint Defender pour scrambling audio",
-        "Jamais de fonts custom, que des web fonts standard",
-        "Nouvelle identité/session/profil pour chaque site"
+        "Canvas Defender: Poison > Block (add noise, don't block)",
+        "WebGL disabled + WebRTC disabled = IP and GPU leaks blocked",
+        "VM with QEMU/KVM + GPU passthrough for native Canvas",
+        "Chain: Tails/Whonix → VPN multi-hop → SOCKS5 → Tor",
+        "AudioContext Fingerprint Defender for audio scrambling",
+        "Never custom fonts, only standard web fonts",
+        "New identity/session/profile for each site"
     ];
 
     const modal = document.createElement('div');
