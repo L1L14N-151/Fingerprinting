@@ -637,6 +637,23 @@ function populateTechnicalDetails(fp) {
 }
 
 async function initFingerprinting() {
+    console.log('Starting fingerprinting...');
+
+    // Check for Firefox resistFingerprinting
+    const isFirefoxRFP = navigator.userAgent.includes('Firefox') &&
+                         window.innerWidth === window.outerWidth &&
+                         window.innerHeight === window.outerHeight &&
+                         new Date().getTimezoneOffset() === 0;
+
+    if (isFirefoxRFP) {
+        console.log('Firefox resistFingerprinting detected!');
+        document.getElementById('error-indicator').style.display = 'block';
+        document.getElementById('error-indicator').innerHTML =
+            '🦊 <strong>Firefox Enhanced Protection Detected!</strong><br>' +
+            'Firefox\'s resistFingerprinting is active.<br>' +
+            'Your fingerprint is generic like all Firefox RFP users.';
+    }
+
     try {
         // Test if basic APIs work
         if (typeof navigator === 'undefined' || !navigator.userAgent) {
@@ -646,15 +663,31 @@ async function initFingerprinting() {
         const fp = new BrowserFingerprint();
         const data = await fp.collectAll();
 
-        // Check for common signs of blocking
-        const isBlocked = !data.canvasData ||
-                         !data.webglRenderer ||
-                         data.plugins === undefined ||
-                         data.fonts === 0 ||
-                         !data.audioSampleRate;
+        console.log('Collected data:', data);
+        console.log('Canvas data:', data.canvasData);
+        console.log('WebGL:', data.webglRenderer);
+        console.log('Plugins:', data.plugins);
+        console.log('Fonts:', data.fonts);
+        console.log('Audio:', data.audioSampleRate);
 
-        if (isBlocked) {
-            throw new Error('Fingerprinting is being blocked by privacy protection');
+        // Count how many features are blocked
+        let blockedCount = 0;
+        if (!data.canvasData) blockedCount++;
+        if (!data.webglRenderer) blockedCount++;
+        if (!data.plugins || data.plugins.length === 0) blockedCount++;
+        if (data.fonts === 0) blockedCount++;
+        if (!data.audioSampleRate) blockedCount++;
+
+        console.log('Blocked features count:', blockedCount);
+
+        // If 3 or more features are blocked, show warning
+        if (blockedCount >= 3) {
+            console.log('Many features blocked, showing warning');
+            document.getElementById('error-indicator').style.display = 'block';
+            document.getElementById('error-indicator').innerHTML =
+                '⚠️ <strong>Partial Fingerprinting Block Detected!</strong><br>' +
+                blockedCount + ' out of 5 tracking features are blocked by your browser.<br>' +
+                'Some data may be incomplete.';
         }
 
         const hash = await fp.generateRealFingerprint();
