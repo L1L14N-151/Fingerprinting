@@ -638,8 +638,24 @@ function populateTechnicalDetails(fp) {
 
 async function initFingerprinting() {
     try {
+        // Test if basic APIs work
+        if (typeof navigator === 'undefined' || !navigator.userAgent) {
+            throw new Error('Navigator API blocked');
+        }
+
         const fp = new BrowserFingerprint();
         const data = await fp.collectAll();
+
+        // Check for common signs of blocking
+        const isBlocked = !data.canvasData ||
+                         !data.webglRenderer ||
+                         data.plugins === undefined ||
+                         data.fonts === 0 ||
+                         !data.audioSampleRate;
+
+        if (isBlocked) {
+            throw new Error('Fingerprinting is being blocked by privacy protection');
+        }
 
         const hash = await fp.generateRealFingerprint();
 

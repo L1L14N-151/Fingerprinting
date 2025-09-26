@@ -288,15 +288,26 @@
         // Fallback in case scripts don't load
         window.addEventListener('error', function(e) {
             console.error('Script loading error:', e);
+            document.getElementById('error-indicator').style.display = 'block';
         });
 
         // Check if functions are loaded
         window.addEventListener('DOMContentLoaded', function() {
             if (typeof initFingerprinting === 'undefined') {
                 console.error('fingerprint.js not loaded');
-                document.getElementById('fingerprintHash').textContent = 'Error: Scripts not loaded';
+                document.getElementById('fingerprintHash').textContent = 'BLOCKED';
+                document.getElementById('error-indicator').style.display = 'block';
             }
         });
+
+        // Show error if nothing happens after 5 seconds
+        setTimeout(function() {
+            if (document.getElementById('fingerprintHash').textContent === 'Calculating...') {
+                document.getElementById('fingerprintHash').textContent = 'BLOCKED';
+                document.getElementById('error-indicator').style.display = 'block';
+                document.getElementById('uniqueness').textContent = 'Privacy protection detected';
+            }
+        }, 5000);
     </script>
 </body>
 </html>
