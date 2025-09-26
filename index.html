@@ -275,8 +275,23 @@
         </div>
     </div>
 
-    <script src="user-agent-parser.js"></script>
-    <script src="fingerprint-scores.js"></script>
-    <script src="fingerprint.js"></script>
+    <script type="text/javascript" src="./user-agent-parser.js"></script>
+    <script type="text/javascript" src="./fingerprint-scores.js"></script>
+    <script type="text/javascript" src="./fingerprint.js"></script>
+
+    <script type="text/javascript">
+        // Fallback in case scripts don't load
+        window.addEventListener('error', function(e) {
+            console.error('Script loading error:', e);
+        });
+
+        // Check if functions are loaded
+        window.addEventListener('DOMContentLoaded', function() {
+            if (typeof initFingerprinting === 'undefined') {
+                console.error('fingerprint.js not loaded');
+                document.getElementById('fingerprintHash').textContent = 'Error: Scripts not loaded';
+            }
+        });
+    </script>
 </body>
 </html>
