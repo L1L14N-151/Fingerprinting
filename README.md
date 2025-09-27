@@ -1,5 +1,18 @@
 # 🔍 Browser Fingerprint Detector
 
+## ⚠️ IMPORTANT: GHOSTERY/UBLOCK USERS ⚠️
+
+### 🚫 **THIS SITE IS BLOCKED BY GHOSTERY AND SIMILAR EXTENSIONS**
+
+If you use **Ghostery**, **uBlock Origin**, **Privacy Badger**, or **Firefox Enhanced Tracking Protection**, the fingerprinting detection WILL NOT WORK!
+
+**To test this site:**
+- 🟢 **Use INCOGNITO/PRIVATE MODE** (extensions are disabled)
+- 🟢 **Temporarily disable Ghostery/uBlock for this site**
+- 🟢 **Use a different browser without privacy extensions**
+
+---
+
 **Advanced Digital Fingerprint Detector** - Discover how websites identify you and protect yourself effectively.
 
 🌐 **Live Demo**: [https://L1L14N-151.github.io/Fingerprinting](https://L1L14N-151.github.io/Fingerprinting)
