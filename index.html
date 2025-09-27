@@ -17,10 +17,10 @@
             <div class="id-label">Your Digital Fingerprint</div>
             <div class="id-value" id="fingerprintHash">Calculating...</div>
             <div class="uniqueness" id="uniqueness"></div>
-            <div id="error-indicator" style="display: none; background: #ff4444; color: white; padding: 10px; border-radius: 8px; margin-top: 10px;">
-                ⚠️ <strong>Fingerprinting Blocked!</strong><br>
-                Your browser's privacy protection is blocking fingerprinting.<br>
-                Try: Disable tracking protection for this site or use incognito mode.
+            <div id="error-indicator" style="display: block; background: #ff4444; color: white; padding: 15px; border-radius: 8px; margin-top: 10px; text-align: center; font-size: 14px;">
+                🚫 <strong>Fingerprinting Blocked!</strong><br>
+                Your browser's privacy protection (Ghostery/uBlock/Firefox) is blocking fingerprinting.<br>
+                <small>Try: Disable protection for this site or use incognito mode.</small>
             </div>
         </div>
 
@@ -285,43 +285,26 @@
     <script type="text/javascript" src="./fingerprint.js"></script>
 
     <script type="text/javascript">
-        console.log('Checking if scripts load...');
+        // If script doesn't load, error is already visible by default
+        // Just update the text after 2 seconds if still blocked
+        setTimeout(function() {
+            var errorDiv = document.getElementById('error-indicator');
+            if (errorDiv && errorDiv.style.display !== 'none') {
+                console.log('Fingerprinting still blocked after 2 seconds');
+                document.getElementById('fingerprintHash').textContent = 'BLOCKED';
+                document.getElementById('uniqueness').textContent = 'Maximum privacy protection active';
 
-        // Immediately check if fingerprint.js loads
-        var scriptLoadTimeout = setTimeout(function() {
-            console.log('fingerprint.js failed to load - blocked by Ghostery/uBlock/etc');
-            document.getElementById('fingerprintHash').textContent = 'BLOCKED BY GHOSTERY';
-            document.getElementById('error-indicator').style.display = 'block';
-            document.getElementById('error-indicator').innerHTML =
-                '🚫 <strong>Fingerprinting Script Blocked!</strong><br>' +
-                'Ghostery or another privacy extension is blocking fingerprint.js<br>' +
-                'Try disabling Ghostery for this site or use incognito mode.';
-            document.getElementById('uniqueness').textContent = 'Maximum privacy - script blocked';
-
-            // Show privacy score at 100%
-            var scoreBar = document.getElementById('privacyScore');
-            var scoreText = document.getElementById('privacyText');
-            if (scoreBar && scoreText) {
-                scoreBar.style.width = '100%';
-                scoreBar.style.background = '#4caf50';
-                scoreText.textContent = 'Maximum protection (Ghostery active)';
-                scoreText.style.color = '#4caf50';
+                // Show 100% privacy score
+                var scoreBar = document.getElementById('privacyScore');
+                var scoreText = document.getElementById('privacyText');
+                if (scoreBar && scoreText) {
+                    scoreBar.style.width = '100%';
+                    scoreBar.style.background = '#4caf50';
+                    scoreText.textContent = 'Maximum protection';
+                    scoreText.style.color = '#4caf50';
+                }
             }
         }, 2000);
-
-        // If script loads, clear the timeout
-        window.fingerprintScriptLoaded = function() {
-            clearTimeout(scriptLoadTimeout);
-            console.log('fingerprint.js loaded successfully');
-        };
-
-        // Check on DOM ready too
-        window.addEventListener('DOMContentLoaded', function() {
-            if (typeof initFingerprinting === 'undefined') {
-                console.error('fingerprint.js functions not available');
-                // The timeout above will handle this
-            }
-        });
     </script>
 </body>
 </html>

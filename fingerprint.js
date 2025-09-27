@@ -1,4 +1,6 @@
-// Notify that script loaded
+// Notify that script loaded and hide error
+console.log('fingerprint.js loaded!');
+document.getElementById('error-indicator').style.display = 'none';
 if (window.fingerprintScriptLoaded) {
     window.fingerprintScriptLoaded();
 }
