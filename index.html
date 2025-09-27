@@ -285,29 +285,43 @@
     <script type="text/javascript" src="./fingerprint.js"></script>
 
     <script type="text/javascript">
-        // Fallback in case scripts don't load
-        window.addEventListener('error', function(e) {
-            console.error('Script loading error:', e);
-            document.getElementById('error-indicator').style.display = 'block';
-        });
+        console.log('Checking if scripts load...');
 
-        // Check if functions are loaded
+        // Immediately check if fingerprint.js loads
+        var scriptLoadTimeout = setTimeout(function() {
+            console.log('fingerprint.js failed to load - blocked by Ghostery/uBlock/etc');
+            document.getElementById('fingerprintHash').textContent = 'BLOCKED BY GHOSTERY';
+            document.getElementById('error-indicator').style.display = 'block';
+            document.getElementById('error-indicator').innerHTML =
+                '🚫 <strong>Fingerprinting Script Blocked!</strong><br>' +
+                'Ghostery or another privacy extension is blocking fingerprint.js<br>' +
+                'Try disabling Ghostery for this site or use incognito mode.';
+            document.getElementById('uniqueness').textContent = 'Maximum privacy - script blocked';
+
+            // Show privacy score at 100%
+            var scoreBar = document.getElementById('privacyScore');
+            var scoreText = document.getElementById('privacyText');
+            if (scoreBar && scoreText) {
+                scoreBar.style.width = '100%';
+                scoreBar.style.background = '#4caf50';
+                scoreText.textContent = 'Maximum protection (Ghostery active)';
+                scoreText.style.color = '#4caf50';
+            }
+        }, 2000);
+
+        // If script loads, clear the timeout
+        window.fingerprintScriptLoaded = function() {
+            clearTimeout(scriptLoadTimeout);
+            console.log('fingerprint.js loaded successfully');
+        };
+
+        // Check on DOM ready too
         window.addEventListener('DOMContentLoaded', function() {
             if (typeof initFingerprinting === 'undefined') {
-                console.error('fingerprint.js not loaded');
-                document.getElementById('fingerprintHash').textContent = 'BLOCKED';
-                document.getElementById('error-indicator').style.display = 'block';
+                console.error('fingerprint.js functions not available');
+                // The timeout above will handle this
             }
         });
-
-        // Show error if nothing happens after 5 seconds
-        setTimeout(function() {
-            if (document.getElementById('fingerprintHash').textContent === 'Calculating...') {
-                document.getElementById('fingerprintHash').textContent = 'BLOCKED';
-                document.getElementById('error-indicator').style.display = 'block';
-                document.getElementById('uniqueness').textContent = 'Privacy protection detected';
-            }
-        }, 5000);
     </script>
 </body>
 </html>

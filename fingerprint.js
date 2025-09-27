@@ -1,3 +1,8 @@
+// Notify that script loaded
+if (window.fingerprintScriptLoaded) {
+    window.fingerprintScriptLoaded();
+}
+
 class BrowserFingerprint {
     constructor() {
         this.fingerprint = {};
